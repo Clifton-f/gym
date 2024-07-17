@@ -1,0 +1,380 @@
+@import url('https://fonts.cdnfonts.com/css/dm-sans');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+*{
+    
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    
+}
+p{
+    font-size: 1.2rem;
+}
+
+html{
+    height: 100%;
+}
+body{
+    background-color: #f9f9f9;
+    
+    height: 100%;
+}
+
+form{
+    background-color: #f9f9f9;
+}
+form label{
+    padding-left: 15px;
+    font-size: large;
+    color: hsla(0, 0%, 0%, 0.40);
+    padding: 5px 15px;
+}
+
+
+button{
+    font-size: large;
+    padding: 0.7rem 0px;
+    border: 0.5px solid #34B53A;
+    border-radius: 10px;
+    transition: 0.5s;
+
+}
+button[type=submit]:hover{
+    background-color: #fff;
+    color: #34B53A;
+    width:40%;
+}
+button[type=submit]{
+    background-color: #34B53A;
+    color: #fff;
+    width:40%;
+    
+}
+
+input{
+    border: 0.5px solid black;
+    background-color: #F1F1F1;
+    /*padding: 3px;*/
+    height: 40px;
+    font-size: large;
+    padding: 0.5rem 0.3rem 0.5rem 0.7rem  ;
+    border-radius: 10px;
+    
+}
+input:focus{
+    border: 0.5px solid #34B53A;
+    outline:13px;
+}
+
+.gen-container{
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+}
+
+.sidebar-object{
+    width:250px;
+}
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 250px;
+    border-right: 1px black;
+    box-shadow: 1px 0px #b3b2b234;
+    z-index: 1;
+    position: fixed;
+    align-content: center;
+    gap:20px;
+}
+.logo{
+width: 60px
+}
+.nav-menu{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+}
+
+.nav-item{
+    color:black;
+    padding: 20px;
+    border-radius: 0 7% 7% 0;
+    
+    
+}
+.nav-item:hover{
+    background-color: #E4E4E4;
+    transition: 1s;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+
+
+
+
+.main-content{
+    width: 100%;
+
+    margin-left: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    
+    
+    text-align: center;
+    
+    
+    
+}
+.header{
+    
+    
+    grid-row-start: 1;
+    grid-row-end: 3;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    height: 120px;
+    
+
+}
+/*.header{
+    display: grid;
+    
+}*/
+.main{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 80%;
+    padding-top: 20px;
+    gap:25px;
+    background-color: #fff;
+    
+    
+}
+
+
+
+.global-data{
+    width: 80%;
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+    padding: 20px;
+    
+    
+    
+}
+.global-data div{
+    width: 30%;
+}
+
+.global-value{
+    font-size: 3rem;
+    color:#34B53A;
+    
+}
+.novas-incricoes, .media-diaria, .membros-activos{
+    background-color: #fff;
+}
+.container-tabela{
+    text-align: center;
+    
+    width: 80%; 
+}
+
+.pesquisa{
+    width: 100%
+}
+
+
+.todos-membros{
+    text-align: left;
+    background-color: #fff;
+    width: 100%;
+    
+    
+    
+    
+}
+.todos-membros, th, td {
+
+    border-collapse: collapse;
+    
+    
+  }
+  
+
+  th, td {
+    padding: 3px;
+    width:33.3%;
+    font-size: large;
+    
+  }
+  th{
+    background-color: #5f5f5f50;
+  }
+
+
+
+#form-addcliente{
+    display: grid;
+    gap:10px;
+    
+    width: 90%;
+    text-align: start;
+    padding: 5px;
+    
+
+}
+
+/*.txt-input{
+    padding: 5px 5px 5px 10px ;
+    
+    
+    border-radius: 10px;
+}*/
+form input{
+    border: 0.5px solid black;
+    background-color: #F1F1F1;
+    /*padding: 3px;*/
+    height: 40px;
+    font-size: large;
+    padding: 0.5rem 0.3rem 0.5rem 0.7rem  ;
+    border-radius: 10px;
+    
+}
+form input:focus{
+    border: 0.5px solid #34B53A;
+    outline:13px;
+}
+select{
+    font-size: large;
+    height:40px;
+    border:0.5px solid black;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  select{
+    background-color: #F1F1F1;
+    border-radius: 10px;
+    padding: 0 50px;
+    
+    
+  }
+  .ant-select-selector{background-color:green}
+  
+.form-item{
+    display: flex;
+    flex-direction: column;
+    min-height: auto;
+    
+    flex-shrink: 1;
+}
+.tipo-subscricao{
+    justify-content: flex-end;
+}
+.row-addcliente{
+    display: flex;
+    flex-direction:row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap:20px;
+    padding:10px;
+    
+    
+    
+}
+.forma-pagamento{
+    display: flex;
+    flex-direction: row;
+  width: 50%;
+  flex-shrink:1;
+  
+}
+
+
+input[type=radio]{
+    display:none;
+    margin:10px;
+    
+}
+input[type=radio]+label{
+    display:inline-block;
+    margin:-2px;
+    padding: 4px 12px;
+    background-color: #F1F1F1;
+    border:0.5px solid black;
+    padding: 0.7rem 0px;
+    flex-grow:1;
+    flex-shrink: inherit;
+    text-align: center;
+    transition:0.5s;
+    color:black;
+}
+input[type=radio]:checked+label, input[type=radio]:hover+label{
+    background-image:none;
+    background-color: #5F5F5F;
+    color:#F1F1F1;
+    
+}
+
+#tipo-subscricao{
+    justify-content: flex-end;
+}
+#lbl-monetario{
+    border-radius: 10px 0px 0px 10px;
+}
+#lbl-emola{
+    border-radius: 0px 10px 10px 0px;
+}
+
+/*addpagamento*/
+#form-addpagamento{
+    display: flex;
+    flex-flow: nowrap column;
+    gap: 10px;
+    width: 50%;
+    
+}
+#tipo-subscricao-pagamento{
+    width:66.6%;
+    display:flex;
+    flex-flow: row nowrap;
+}
+
+#tipo-subscricao-pagamento label{
+    flex-grow: 1;
+    flex-shrink: 1;
+    width:50%;
+}
+
+#forma-pagamento-pagamento{
+    width:100%
+}
+.select-months{
+    width:33.3%;
+    
+}
+

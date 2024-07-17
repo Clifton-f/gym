@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Adicionar Cliente</title>
+    <link rel="stylesheet" href="assets/css/design.css">
+
+
+</head>
+
+<body>
+    <div class="gen-container">
+        <object class="sidebar-object" data="./sidebar.html"></object>
+        
+        <div class="main-content">
+
+            <div class="header">
+                <p>CLIENTE</p>
+
+
+            </div>
+            <div class="main">
+                <h1>DADOS DO CLIENTE</h1>
+
+
+
+                <form class="formulario" id="form-editcliente" name="formAddCliente">
+                    <div class="row-addcliente" id="first-row-adddcliente">
+                        <div class="form-item" id="nome-div">
+                            <label class="label-form" id="nome-label">Nome</label>
+                            <input type="text" class="txt-input" name="name" id="nome-editpagamento">
+                        </div>
+                        <div class="form-item" id="apelido-div">
+                            <label class="label-form" id="apelido-label">Apelido</label>
+                            <input type="text" class="txt-input" id="apelido-editpagamento" name="apelido">
+                        </div>
+                        <div class="form-item" id="género-div">
+                            <label id="genero-label" class="label-form">Género</label>
+                            <select class="select-number" id="genero-editpagamaento" name="genero">
+                                <option value="1">Masculino</option>
+                                <option value="2">Feminino</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+                    <div class="row-addcliente">
+
+                        <div class="form-item" id="contacto-div">
+                            <label class="label-form">Contacto</label>
+                            <input type="number"  id="contacto-editpagamento" name="contacto">
+
+                        </div>
+                        <div class="form-item" id="tipo-subscricao">
+                            <select id="modalidade-editcliente" name="modalidade">
+                                <option value="mensalidade">Mensalidade</option>
+                                <option value="diaria">Diária</option>
+                            </select>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-item" id="metodo-pagamento" >
+                        <label class="label-form" id="metodo-editcliente-label">Método de pagamento</label>
+
+                        <div class="forma-pagamento" id="forma-pagamento-cliente">
+                            <input type="radio" class="radio-input" id="monetario" value="monetario"
+                                name="form-pagamento" checked="checked">
+                                <label for="monetario"id="lbl-monetario" >Monetario</label>
+
+                            <input type="radio" class="radio-input" id="m-pesa" value="m-pesa"
+                                name="form-pagamento">
+                                <label for="m-pesa">M-pesa</label>
+                            <input type="radio" class="radio-input" id="e-mola" value="e-mola"
+                                name="form-pagamento">
+                                <label for="e-mola" id="lbl-emola">E-mola</label>
+                        </div>
+
+                    </div>
+
+                    <button type="submit" id="registar">REGISTAR</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+<script src="./assets/Js/fetch.js">
+prepararCliente()
+function prepararCliente(){
+let name = sessionStorage.getItem('name').split(' ');
+    document.getElementById('apelido-editpagamento').value = name[name.length-1];
+    document.getElementById('nome-editpagamento').value = name.splice(name.length-1,name.length);
+    
+    document.getElementById('genero-editpagamaento').value = sessionStorage.getItem('gender')
+    document.getElementById('contacto-editpagamento').value = sessionStorage.getItem('phone')
+    document.getElementById('modalidade-editcliente').value = sessionStorage.getItem('id')
+
+
+    
+    
+  }
+</script>
+</body>
+
+</html>

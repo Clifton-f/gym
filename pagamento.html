@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Pagamento
+        </title>
+        <link rel="stylesheet" href="./assets/css/design.css">
+
+    </head>
+    <body>
+        <div class="gen-container">
+            <!---object data="./sidebar.html"></object--->
+            <div class="sidebar-area">
+                <div class="sidebar">
+                    <img class="logo" src="./assets/images/logo.png">
+                    <div class="nav-menu">
+                        <a class="nav-item" id="geral" href="#">Geral</a>
+                        <a class="nav-item" id="gerir-membros" href="#">Gerir Membros</a>
+                        <a class="nav-item" id="historico" href="#">Histórico de Pagamentos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="main-content">
+                <div class="header">
+                    <div class="nome">
+                        <h1>Bem-Vindo</h1>
+                    </div>
+                    
+                    <a class="header-a" href="#">PAGAMENTOS</a>
+                    <a class="header-a" href="#">ADICIONAR MEMBRO</a>
+    
+                </div>
+                <div class="main">
+                    <div class ="container-tabela">
+                        <input type="text" placeholder="pesquisar" id="pesquisa" oninput="searchTable(this.value)">
+                        <table  class ="todos-membros" id="tabela">
+    
+                        </table>
+                        <button class="page-button" id="prev" onclick="prevPage(filteredArray)"><-</button>
+                        <button class="page-button" id="next" onclick="nextPage(filteredArray)">-></button>
+                    </div>
+
+                </div>
+                
+                
+            </div>
+        </div>
+            <script src="./assets/Js/pagamento.js"></script>
+            
+    </body>
+</html>
