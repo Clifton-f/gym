@@ -1,5 +1,5 @@
 let page = 1
-let clients = [];
+let clientes = [];
 let filteredArray=[];
 
 var inputElements = document.getElementsByTagName('input');
@@ -52,10 +52,12 @@ then(json=>{console.log(json)
 function buildTable(array,pagina){
     let firstEl = pagina*10;
     let htmlCode = "<tbody><tr><th style='display:none'>indice</th><th>nome</th><th>contacto</th><th>status</th></tr>"
+    
     if(array.length > firstEl+10){
         for(let i = firstEl; i<10; i++){
-            htmlCode+="<tr onclick='storeClient(clientes["+i+"])'><td style='display:none'>"+i+"</td><td>"+array[i].name+"</td><td>"+array[i].phone+"</td><td>"+array[i].status+"</td><td></tr>";
+            htmlCode+="<tr onclick='storeClient(clientes["+i+"])'><td style='display:none'>"+i+"</td><td>"+array[i].name+"</td><td>"+array[i].phone+"</td><td>"+array[i].status.status+"</td><td><button>add</button><button>edit</button></td></tr>";
             
+           
 
 
         }
@@ -96,28 +98,7 @@ class Cliente{
       this.status=estado;
     }
   }
-  let clientes = [new Cliente("Ana","912345678","Ativo"),
-    new Cliente("João",	"965432187",	"Inativo"),
-    new Cliente("Maria",	"923876541",	"Ativo"),
-    new Cliente("Pedro",	"934567890",	"Ativo"),
-    new Cliente("Sofia",	"978123456",	"Inativo"),
-    new Cliente("Carlos",	"945678123",	"Ativo"),
-    new Cliente("Marta",	"919876543",	"Ativo"),
-    new Cliente("José",	"932156789",	"Inativo"),
-    new Cliente("Ana Rita",	"968765432",	"Ativo"),
-    new Cliente("Miguel",	"912348765",	"Inativo"),
-    new Cliente("Inês",	"923456789",	"Ativo"),
-    new Cliente("Tiago",	"934567123",	"Ativo"),
-    new Cliente("Catarina",	"978654321",	"Inativo"),
-    new Cliente("Hugo",	"945123678",	"Ativo"),
-    new Cliente("Beatriz",	"919234567",	"Ativo"),
-    new Cliente("Ricardo",	"932187654",	"Inativo"),
-    new Cliente("Diana",	"968765123"	,"Ativo"),
-    new Cliente("André",	"912345987"	,"Ativo"),
-    new Cliente("Filipa",	"923456781"	,"Inativo"),
-    new Cliente("Guilherme",	"934567812",	"Ativo")
-    
-  ];
+  
 filteredArray = clientes
 
  
@@ -157,26 +138,7 @@ filteredArray = clientes
 
 }
 
-function editClient(client){
-  let link = ("http://196.3.100.142:1997/client/client/"+client.id+"/")
-  let headerList = new Headers({
-    "Authorization":"Basic"+btoa("clifton:87654321"),
-    "Content-Type": "Application/Json"
-  })
-  fetch(link,{
-            method:"PUT",
-            body: JSON.stringify(client),
-            headers: headerList
-        }).then(response=>{
-      if(!response.ok){
-        throw("ocorreu um erro, tente novamente")
-      }
-      return response.json();
-    }).then(data => alert(JSON.stringify(data)))
-    .catch(error=>console.log(error));
 
-  
-}
 
 
 function storePagamento(pagamento){
@@ -185,15 +147,15 @@ function storePagamento(pagamento){
 }
 
   prevPage(filteredArray);
-  cliente
+  
 
   
   fetch("http://196.3.100.142:1997/client/clients/",{ headers: new Headers({
     "Authorization": 'Basic'+btoa('clifton:87654321')
   })}).then(response => response.json()).
 then(json=>{console.log(json)
-  clients = json
-  document.getElementById("tabela").innerHTML= buildTable(json,)
+  clientes = json
+  document.getElementById("tabela").innerHTML= buildTable(json,0)
 
 }
 

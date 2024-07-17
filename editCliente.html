@@ -25,15 +25,17 @@
 
 
                 <form class="formulario" id="form-editcliente" name="formAddCliente">
-                    <div class="row-addcliente" id="first-row-adddcliente">
+                    <div class="row-addcliente" id="first-row-editCliente">
                         <div class="form-item" id="nome-div">
                             <label class="label-form" id="nome-label">Nome</label>
+                            <input type="text" style="display: none;" name="id" id="id">
                             <input type="text" class="txt-input" name="name" id="nome-editpagamento">
                         </div>
-                        <div class="form-item" id="apelido-div">
-                            <label class="label-form" id="apelido-label">Apelido</label>
-                            <input type="text" class="txt-input" id="apelido-editpagamento" name="apelido">
-                        </div>
+                        
+                        
+
+                    </div>
+                    <div class="row-addcliente">
                         <div class="form-item" id="género-div">
                             <label id="genero-label" class="label-form">Género</label>
                             <select class="select-number" id="genero-editpagamaento" name="genero">
@@ -43,66 +45,63 @@
 
                         </div>
 
-                    </div>
-                    <div class="row-addcliente">
-
                         <div class="form-item" id="contacto-div">
                             <label class="label-form">Contacto</label>
                             <input type="number"  id="contacto-editpagamento" name="contacto">
 
                         </div>
-                        <div class="form-item" id="tipo-subscricao">
-                            <select id="modalidade-editcliente" name="modalidade">
-                                <option value="mensalidade">Mensalidade</option>
-                                <option value="diaria">Diária</option>
-                            </select>
-
-                        </div>
+                       
 
                     </div>
 
 
-                    <div class="form-item" id="metodo-pagamento" >
-                        <label class="label-form" id="metodo-editcliente-label">Método de pagamento</label>
+                    
 
-                        <div class="forma-pagamento" id="forma-pagamento-cliente">
-                            <input type="radio" class="radio-input" id="monetario" value="monetario"
-                                name="form-pagamento" checked="checked">
-                                <label for="monetario"id="lbl-monetario" >Monetario</label>
-
-                            <input type="radio" class="radio-input" id="m-pesa" value="m-pesa"
-                                name="form-pagamento">
-                                <label for="m-pesa">M-pesa</label>
-                            <input type="radio" class="radio-input" id="e-mola" value="e-mola"
-                                name="form-pagamento">
-                                <label for="e-mola" id="lbl-emola">E-mola</label>
-                        </div>
-
-                    </div>
-
-                    <button type="submit" id="registar">REGISTAR</button>
+                    <button type="submit" id="salvar">Salvar</button>
                 </form>
 
             </div>
         </div>
     </div>
 
-<script src="./assets/Js/fetch.js">
-prepararCliente()
-function prepararCliente(){
-let name = sessionStorage.getItem('name').split(' ');
-    document.getElementById('apelido-editpagamento').value = name[name.length-1];
-    document.getElementById('nome-editpagamento').value = name.splice(name.length-1,name.length);
+<script>
+  function editClient(client){
+  let link = ("http://196.3.100.142:1997/client/client/"+client.id+"/")
+  let headerList = new Headers({
+    "Authorization":"Basic"+btoa("clifton:87654321"),
+    "Content-Type": "Application/Json"
+  })
+  fetch(link,{
+            method:"PUT",
+            body: JSON.stringify(client),
+            headers: headerList
+        }).then(response=>{
+      if(!response.ok){
+        throw("ocorreu um erro, tente novamente")
+      }
+      return response.json();
+    }).then(data => alert(JSON.stringify(data)))
+    .catch(error=>console.log(error));
+
+  
+}
+    document.getElementById('nome-editpagamento').value = sessionStorage.getItem('name')
     
     document.getElementById('genero-editpagamaento').value = sessionStorage.getItem('gender')
     document.getElementById('contacto-editpagamento').value = sessionStorage.getItem('phone')
-    document.getElementById('modalidade-editcliente').value = sessionStorage.getItem('id')
+    document.getElementById('id').value = sessionStorage.getItem('id')
+    sessionStorage.clear()
+    document.getElementById('form-editcliente').addEventListener("submit", function (e){
+        e.preventDefault();
+        let formData = new FormData(document.getElementById('form-editcliente'))
+        
+        let obj = Object.fromEntries(formData);
+        editClient(obj)
 
-
+    })
     
-    
-  }
 </script>
+
 </body>
 
 </html>

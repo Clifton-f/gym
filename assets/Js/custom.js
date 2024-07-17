@@ -6,12 +6,21 @@ class pagamento{
 }
 
 
-let clients=[]
+
+class Cliente{
+  constructor(nome,contacto,status){
+    this.name=nome;
+    this.phone = contacto;
+    this.status=status;
+  }
+}
+let clientes=[]
+
 fetch("http://196.3.100.142:1997/client/clients/",{ headers: new Headers({
     "Authorization": 'Basic'+btoa('clifton:87654321')
   })}).then(response => response.json()).
 then(json=>{console.log(json)
-  clients = json
+  clientes = json
   document.getElementById("tabela").innerHTML= buildTable(json)
 
 }
@@ -32,14 +41,8 @@ return htmlCode+"</tbody>"
 function addPagamento(){
 
 }
-class Cliente{
-  constructor(nome,contacto,status){
-    this.name=nome;
-    this.phone = contacto;
-    this.status=status;
-  }
-}
-let clientes = [new Cliente("Ana","912345678","Ativo"),
+
+/*let clientes = [new Cliente("Ana","912345678","Ativo"),
   new Cliente("João",	"965432187",	"0"),
   new Cliente("Maria",	"923876541",	"1"),
   new Cliente("Pedro",	"934567890",	"1"),
@@ -60,7 +63,7 @@ let clientes = [new Cliente("Ana","912345678","Ativo"),
   new Cliente("Filipa",	"923456781"	,"0"),
   new Cliente("Guilherme",	"934567812",	"1")
   
-]
+]*/
 
 
 
@@ -81,10 +84,12 @@ let test = new Cliente(obj.name+obj.apelido,obj.contacto,)
 
 
 function storeClient(cliente){
+  let gender = cliente.gender.id
+  let status = cliente.status.id
     sessionStorage.setItem("id", cliente.id)
     sessionStorage.setItem("name", cliente.name)
-    sessionStorage.setItem("status", cliente.status)
-    sessionStorage.setItem("gender", cliente.gender)
+    sessionStorage.setItem("status", status)
+    sessionStorage.setItem("gender", gender)
     sessionStorage.setItem("phone", cliente.phone)
     sessionStorage.setItem("deleted", cliente.deleted)
     window.location.href=("./editCliente.html");

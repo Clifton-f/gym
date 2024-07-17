@@ -15,20 +15,21 @@
         var formData = new FormData(form);
         
         let obj = Object.fromEntries(formData);
-      let test = new Cliente(obj.name+" "+obj.apelido,obj.contacto,1,Number(obj.genero))
+      let cliente = new Cliente(obj.name+" "+obj.apelido,obj.contacto,1,Number(obj.genero))
         
         for (var pair of formData.entries()) {
           console.log(pair[0] + ": " + pair[1]);
         }
         console.log("inserir_________________")
-        insertClient(test);
+        insertClient(cliente)
+        
         
         
         
       
     
     });
-
+    
 
     function insertClient(client){
         fetch("http://196.3.100.142:1997/client/clients/",{
@@ -42,11 +43,31 @@
                 throw new console.error("Erro");
             }
             return response.json();
-            }).then(result => console.log(result))
+            }).then(result => result)
       }
+      function insertSubcricao(inscricao){
 
-
-
+        fetch("http://196.3.100.142:1997/client/subscriptions/", {
+            method: "POST",
+            headers: new Headers({
+                "Content-Type": "application/json",
+                "Authorization": 'Basic ' + btoa('clifton:87654321')
+            }),
+            body: JSON.stringify(inscricao)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('epa');
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert(JSON.stringify(data));
+        })
+        .catch(error => {
+            console.error('Blablabla:', error);
+        });
+      }
 
 
       class Inscricao{
@@ -65,29 +86,10 @@
         
       }
       
-      let inscricao = new Inscricao(1,false,false,1200,"2024-07-05","2024-08-05",1,1);
+      let inscricao = new Inscricao(9,false,false,1200,"2024-07-05","2024-08-05",1,1);
 
 
-      /*fetch("http://196.3.100.142:1997/client/subscriptions/", {
-        method: "POST",
-        headers: new Headers({
-            "Content-Type": "application/json",
-            "Authorization": 'Basic ' + btoa('clifton:87654321')
-        }),
-        body: JSON.stringify(inscricao)
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('epa');
-        }
-        return response.json();
-    })
-    .then(data => {
-        alert(JSON.stringify(data));
-    })
-    .catch(error => {
-        console.error('Blablabla:', error);
-    });*/
+      
 
 
 
@@ -132,3 +134,4 @@
         }
     ]
    
+    
