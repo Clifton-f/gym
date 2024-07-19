@@ -10,7 +10,7 @@
 
 <body>
     <div class="gen-container">
-        <object class="sidebar-object" data="./sidebar.html"></object>
+        <div id="sidebar-object"></div>
         <div class="main-content">
 
             <div class="header">
@@ -20,23 +20,25 @@
             </div>
             <div class="main">
                 <h1>DADOS DO PAGAMENTO</h1>
+                
                 <form class="formulario" id="form-addpagamento">
+                    <input type="text" style="display: none;" name="id" id="id">
                     <label class="label-form-addpagamento">Nome</label>
-                    <input type="text" class="txt-input" id="nome-addPagamento" disabled="true">
+                    <input type="text" class="txt-input" id="nome-addPagamento" disabled="true" name="name">
                     <label class="label-form-addpagamento">Contacto</label>
-                    <input type="number" class="txt-input-addpagamento" disabled="true" id="contacto-addpagamento">
+                    <input type="number" class="txt-input-addpagamento" disabled="true" id="contacto-addpagamento" name="contacto">
 
 
                     <div class="form-item" id="tipo-subscricao-pagamento">
-                        <input type="radio" class="radio-input" id="mensalidade" value="mensalidade"
+                        <input type="radio" class="radio-input" id="mensalidade" value="1" checked="checked"
                         name="modalidade"><label for="mensalidade" style="border-radius:10px 0px 0px 10px">Mensalidade</label>
-                        <input type="radio" class="radio-input" id="diaria" value="diaria" name="modalidade"><label
+                        <input type="radio" class="radio-input" id="diaria" value="2" name="modalidade"><label
                             for="diaria" style="border-radius:0px 10px 10px 0px">Diaria</label>
                     </div>
 
 
 
-                    <select class="select-months" id="select-addpagamaento">
+                    <select class="select-months" id="select-addpagamaento" name="multiplier">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -53,14 +55,14 @@
                     </select>
                     <div class="forma-pagamento" id="forma-pagamento-pagamento">
                         <input type="radio" class="radio-input" id="monetario" value="monetario"
-                                name="form-pagamento" checked="checked">
+                                name="forma-pagamento" checked="checked">
                                 <label for="monetario"id="lbl-monetario" >Monetario</label>
 
                             <input type="radio" class="radio-input" id="m-pesa" value="m-pesa"
-                                name="form-pagamento">
+                                name="form-pagamento" name="forma-pagamento">
                                 <label for="m-pesa">M-pesa</label>
                             <input type="radio" class="radio-input" id="e-mola" value="e-mola"
-                                name="form-pagamento">
+                                name="forma-pagamento">
                                 <label for="e-mola" id="lbl-emola">E-mola</label>
 
 
@@ -72,7 +74,16 @@
         </div>
     </div>
 
+    <script>
+        document.getElementById('form-addpagamento').reset()
+        document.getElementById('id').value = sessionStorage.getItem('id')
+        document.getElementById('nome-addPagamento').value = sessionStorage.getItem('name')
+        document.getElementById('contacto-addpagamento').value = sessionStorage.getItem('phone')
+        sessionStorage.clear()
+    </script>
+<script src="./assets/Js/fetch.js"></script>
 
+<script src="./assets/Js/sidebar.js"></script>
 </body>
 
 </html>

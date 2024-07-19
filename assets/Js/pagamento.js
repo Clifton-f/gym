@@ -1,3 +1,16 @@
+class Cliente{
+ 
+  id;
+  gender;
+  deleted = false;
+  constructor(nome,contacto,estado){
+    this.name=nome;
+    this.phone = contacto;
+    this.status=estado;
+  }
+}
+
+
 let page = 1
 let clientes = [];
 let filteredArray=[];
@@ -51,26 +64,24 @@ then(json=>{console.log(json)
 
 function buildTable(array,pagina){
     let firstEl = pagina*10;
-    let htmlCode = "<tbody><tr><th style='display:none'>indice</th><th>nome</th><th>contacto</th><th>status</th></tr>"
-    
+    let htmlCode = "<tbody><tr><th style='display:none'>indice</th><th>nome</th><th>contacto</th><th>status</th><th>pagar</th><th>editar</th></tr>"
+    let lastElement = 0;
     if(array.length > firstEl+10){
-        for(let i = firstEl; i<10; i++){
-            htmlCode+="<tr onclick='storeClient(clientes["+i+"])'><td style='display:none'>"+i+"</td><td>"+array[i].name+"</td><td>"+array[i].phone+"</td><td>"+array[i].status.status+"</td><td><button>add</button><button>edit</button></td></tr>";
-            
-           
-
-
-        }
+      lastElement= firstEl+10
+      document.getElementById("next").disabled=false;
     }else{
-        for(let i = firstEl; i<array.length; i++){
-
-            htmlCode+="<tr><td>"+array[i].name+"</td><td>"+array[i].phone+"</td><td>"+array[i].status+"</td></tr>";
-            document.getElementById("next").disabled=true;
-        }
-
-
-
+      lastElement=array.length
+      document.getElementById("next").disabled=true;
     }
+
+    for(let i = firstEl; i<lastElement; i++){
+      htmlCode+="<tr><td style='display:none;width=0%'>"+i+"</td><td>"+array[i].name+"</td><td>"+array[i].phone+"</td><td>"+array[i].status.status+"</td><td><button onClick='storePagamento(clientes["+i+"])'>pagar</button></td><td><button onclick='storeClient(clientes["+i+"])'>editar</button></td></tr>";
+      
+     
+
+
+  }
+    
     
     htmlCode+="</tbody>"
     document.getElementById("tabela").innerHTML=htmlCode;
@@ -87,18 +98,7 @@ function searchTable(query){
     buildTable(filteredArray,page);
     
 }
-class Cliente{
- 
-    id;
-    gender;
-    deleted = false;
-    constructor(nome,contacto,estado){
-      this.name=nome;
-      this.phone = contacto;
-      this.status=estado;
-    }
-  }
-  
+
 filteredArray = clientes
 
  
@@ -141,12 +141,14 @@ filteredArray = clientes
 
 
 
-function storePagamento(pagamento){
-  sessionStorage.setItem("id")
+function storePagamento(cliente){
+  sessionStorage.setItem("id", cliente.id)
+  sessionStorage.setItem('name',cliente.name)
+  sessionStorage.setItem('phone',cliente.phone)
   window.location.href="./addPagamento.html";
 }
 
-  prevPage(filteredArray);
+  
   
 
   

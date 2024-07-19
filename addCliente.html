@@ -10,7 +10,8 @@
 
 <body>
     <div class="gen-container">
-        <object class="sidebar-object" data="./sidebar.html"></object>
+        <div id="sidebar-object"></div>
+        <!--object class="sidebar-object" data="./sidebar.html"></object---->
         
         <div class="main-content">
 
@@ -31,10 +32,7 @@
                             <label class="label-form" id="nome-label">Nome</label>
                             <input type="text" class="txt-input" name="name" id="nome-addpagamento">
                         </div>
-                        <div class="form-item" id="apelido-div">
-                            <label class="label-form" id="apelido-label">Apelido</label>
-                            <input type="text" class="txt-input" id="apelido-addpagamento" name="apelido">
-                        </div>
+                        
                         <div class="form-item" id="género-div">
                             <label id="genero-label" class="label-form">Género</label>
                             <select class="select-number" id="genero-addpagamaento" name="genero">
@@ -54,8 +52,8 @@
                         </div>
                         <div class="form-item" id="tipo-subscricao">
                             <select id="modalidade-addcliente" name="modalidade">
-                                <option value="mensalidade">Mensalidade</option>
-                                <option value="diaria">Diária</option>
+                                <option value="1">Mensalidade</option>
+                                <option value="2">Diária</option>
                             </select>
 
                         </div>
@@ -89,6 +87,7 @@
     </div>
 
 <script src="./assets/Js/fetch.js"></script>
+<script src="./assets/Js/sidebar.js"></script>
 </body>
 
 </html>
